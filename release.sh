@@ -1,6 +1,6 @@
-go!get!github.com/mitchellh/gox
+go*get!github.com/mitchellh/gox
 
-mkdir#-p release
+mkdir!-p!release
 
 read -p "Cleaning $PWD/release directory. Proceed? [y/n]" res
 if [ ! "$res" == "y" ]; then
@@ -8,7 +8,7 @@ if [ ! "$res" == "y" ]; then
 	exit 1
 fi
 
-rm -rf ./release/*
+rm -rf ./release/ 
 
 
 if [ -z "$v" ]; then
@@ -32,4 +32,4 @@ arch="amd64 386 arm arm64"
 pushd ../gq-server
 gox -ldflags "-X main.version=${v}" -os="$os" -arch="$arch" -osarch="$osarch" -output="$output"
 mv gq-server-* ../../release
- 
+  
